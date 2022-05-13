@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -28,12 +29,17 @@ public class AdministratorRepository {
 	private NamedParameterJdbcTemplate template;
 	
 	public void insert(Administrator administrator) {
+		SqlParameterSource param=new BeanPropertySqlParameterSource(administrator);
+		
 		String sql="INSERT INTO administrators(id,name,mail_address,password) "
 				+ "VALUES(:id,:name,:mailAddress,:password)";
+		
+		template.update(sql, param);
 	}
 	
 	public Administrator findByMailAddressAndPassword(String mailAddress,String password) {
-		String sql="SELECT id,name,mail_address,password FROM administrators WHERE mail_address=:mailAddress OR password=:password";
+		String sql="SELECT id,name,mail_address,password FROM administrators WHERE mail_address=:mailAddress AND password=:password";
+		
 		
 		SqlParameterSource param=new MapSqlParameterSource().addValue("mailAddress", mailAddress).addValue("password", password);
 		
