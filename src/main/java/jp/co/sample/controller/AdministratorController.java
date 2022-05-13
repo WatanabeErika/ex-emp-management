@@ -24,7 +24,6 @@ public class AdministratorController {
 	@RequestMapping("/insert")
 	public String insert(InsertAdministratorForm form) {
 		Administrator administrator=new Administrator();
-		System.out.println(form);
 		BeanUtils.copyProperties(form, administrator);
 		administratorService.insert(administrator);
 		return "redirect:/";
