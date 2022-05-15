@@ -35,4 +35,13 @@ public class EmployeeController {
 		model.addAttribute("employee", employee);
 		return "employee/detail";
 	}
+	
+	@RequestMapping("/update")
+	public String update(UpdateEmployeeForm form) {
+		Employee employee=employeeService.showDetail(Integer.parseInt(form.getId()));
+		employee.setDependentsCount(Integer.parseInt(form.getDependentsCount()));
+		employeeService.update(null);
+		return "employee/showList";
+		
+	}
 }
