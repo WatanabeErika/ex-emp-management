@@ -52,3 +52,7 @@ insert into employees(id,name,image,gender,hire_date,mail_address,zip_code,addre
 insert into employees(id,name,image,gender,hire_date,mail_address,zip_code,address,telephone,salary,characteristics,dependents_count) values(20,'小林九子', 'e2.png','女性', '2016/06/05', 'kyuko.kobayashi@sample.com'	,'999-9999', '長野県長野市1-1-1'		, '080-9999-9999', 250000, '小林九子さんは明るく素直な性格です。リーダーシップを発揮します。新卒社員研修の時はグループ開発の時にリーダーを買ってでました。積極性も人間性も抜群です。周りに対する不満も聞いたことがありません。', 5);
 insert into employees(id,name,image,gender,hire_date,mail_address,zip_code,address,telephone,salary,characteristics,dependents_count) values(21,'加藤十郎', 'e1.png','男性', '2008/07/12', 'juro.kato@sample.com'		,'000-0000', '岐阜県岐阜市1-1-1'		, '070-0000-0000', 190000, '加藤十郎さんは明るく素直な性格です。リーダーシップを発揮します。新卒社員研修の時はグループ開発の時にリーダーを買ってでました。積極性も人間性も抜群です。周りに対する不満も聞いたことがありません。', 2);
 insert into employees(id,name,image,gender,hire_date,mail_address,zip_code,address,telephone,salary,characteristics,dependents_count) values(22,'加藤十子', 'e2.png','女性', '2002/08/23', 'juko.kato@sample.com'		,'111-1111', '静岡県静岡市1-1-1'		, '070-1111-1111', 220000, '加藤十子さんは明るく素直な性格です。リーダーシップを発揮します。新卒社員研修の時はグループ開発の時にリーダーを買ってでました。積極性も人間性も抜群です。周りに対する不満も聞いたことがありません。', 1);
+
+
+
+id,name,image,gender,hire_date,mail_address,zip_code,address,telephone,salary,characteristics,dependents_count 
