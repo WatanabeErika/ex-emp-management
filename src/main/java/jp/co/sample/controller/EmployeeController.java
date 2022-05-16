@@ -37,11 +37,14 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping("/update")
-	public String update(UpdateEmployeeForm form) {
-		Employee employee=employeeService.showDetail(Integer.parseInt(form.getId()));
-		employee.setDependentsCount(Integer.parseInt(form.getDependentsCount()));
-		employeeService.update(null);
-		return "employee/showList";
+	public String update(UpdateEmployeeForm form,Model model) {
+		int idOne=Integer.parseInt(form.getId());
+		Employee employee=employeeService.showDetail(idOne);
+		
+		int second=Integer.parseInt(form.getDependentsCount());
+		employee.setDependentsCount(second);
+		employeeService.update(employee);
+		return "redirect:/employee/showList";
 		
 	}
 }
