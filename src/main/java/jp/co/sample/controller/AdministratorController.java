@@ -19,48 +19,54 @@ import jp.co.sample.service.AdministratorService;
 public class AdministratorController {
 	@Autowired
 	private AdministratorService administratorService;
-	
+
 	@Autowired
 	private HttpSession session;
-	
+
 	@ModelAttribute
 	public InsertAdministratorForm setUpInsertAdministratorForm() {
 		return new InsertAdministratorForm();
 	}
-	
+
 	@RequestMapping("/insert")
 	public String insert(InsertAdministratorForm form) {
-		Administrator administrator=new Administrator();
+		Administrator administrator = new Administrator();
 		BeanUtils.copyProperties(form, administrator);
 		administratorService.insert(administrator);
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping("/toInsert")
 	public String toInsert() {
 		return "administrator/insert";
 	}
-	
+
 	@ModelAttribute
 	public LoginForm setUpLoginForm() {
 		return new LoginForm();
 	}
-	
+
 	@RequestMapping("/")
 	public String toLogin() {
 		return "administrator/login";
 	}
-	
+
 	@RequestMapping("/login")
-	public String login(LoginForm form,Model model) {
-		Administrator admin=administratorService.login(form.getMailAddress(),form.getPassword());
-		
-		if(admin==null) {
+	public String login(LoginForm form, Model model) {
+		Administrator admin = administratorService.login(form.getMailAddress(), form.getPassword());
+
+		if (admin == null) {
 			model.addAttribute("fail", "メールアドレスまたはパスワードが不正です。");
 			return "administrator/login";
-		}else {
+		} else {
 			session.setAttribute("administratorName", admin);
 			return "forward:/employee/showList";
 		}
+	}
+
+	@RequestMapping("/logout")
+	public String logout() {
+		session.invalidate();
+		return "redirect:/";
 	}
 }
